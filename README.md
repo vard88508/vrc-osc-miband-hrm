@@ -5,7 +5,7 @@
 
 ## Requirements
 1. A PC on Windows with Bluetooth 4.0 or higher
-2. A browser that supports the Web Bluetooth API ([Like Chrome](https://google.com/chrome))
+2. A browser that supports Web Bluetooth API ([Like Chrome](https://google.com/chrome))
 3. Xiaomi Mi band 4 or 5
 
 ## Usage
