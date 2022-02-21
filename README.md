@@ -1,5 +1,5 @@
 # Mi Band 4/5 osc heart rate monitor for VRChat
-![image](https://i.imgur.com/J6bFJ7u.png)__
+![image](https://i.imgur.com/J6bFJ7u.png)  
 By [Vard](https://twitter.com/VardFree)
 - Based on Jaapp-'s [miband-5-heart-rate-monitor](https://github.com/Jaapp-/miband-5-heart-rate-monitor)
 
