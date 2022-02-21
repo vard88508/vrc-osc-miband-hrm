@@ -6,9 +6,12 @@
 ## Requirements
 1. A PC on Windows with Bluetooth 4.0 or higher support
 2. A browser that supports the Web Bluetooth API ([Like Chrome](https://google.com/chrome))
-3. Mi band 4 or 5
+3. Xiaomi Mi band 4 or 5
 
 ## Usage
 
-1. First you need to get auth key for your Mi band. Visit http://www.freemyband.com/ for more information
-2. Download 
+1. First you need to get auth key for your Mi band. Visit https://freemyband.com/ for more information
+2. Download [vrchat-osc-miband-hrm.zip](https://github.com/vard88508/vrchat-osc-miband-hrm/releases), unpack and run vrchat-osc-miband-hrm.exe or if you don't trust me - Download repository and run it trough node-js
+3. Enter your auth key to automaticly opened browser window and click Connect
+4. Pair your mi band with browser
+5. Wait about ~30s and done! Now you sending data about your heartrate to VRChat
