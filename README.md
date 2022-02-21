@@ -2,7 +2,6 @@
 ![image](https://i.imgur.com/J6bFJ7u.png)
 By [Vard](https://twitter.com/VardFree)
 - Based on Jaapp-'s [miband-5-heart-rate-monitor](https://github.com/Jaapp-/miband-5-heart-rate-monitor)
-- Number shader by [RED_SIM](patreon.com/red_sim)
 
 ### This app alows you to send osc messages to VRChat with your heartrate trough float value
 The float value(0-1) represents your heartrate from 0 to 254
@@ -19,3 +18,6 @@ The float value(0-1) represents your heartrate from 0 to 254
 3. Enter your auth key to automaticly opened browser window and click Connect
 4. Pair your mi band with browser
 5. Wait about ~30s and done! Now you sending data about your heartrate to VRChat
+
+## Tips
+- RED_SIM's [Simple counter shader](https://test.com/) will help to display your heartrate to VRChat
