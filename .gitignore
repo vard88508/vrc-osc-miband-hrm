@@ -1,3 +1,4 @@
+*.exe
 # Logs
 logs
 *.log
