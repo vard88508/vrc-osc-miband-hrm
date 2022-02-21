@@ -3,6 +3,8 @@
 - Based on Jaapp-'s [miband-5-heart-rate-monitor](https://github.com/Jaapp-/miband-5-heart-rate-monitor)
 - Number shader by [RED_SIM](patreon.com/red_sim)
 
+### This app alows you to send osc messages to VRChat with your heartrate trough float value
+
 ## Requirements
 1. A PC on Windows with Bluetooth 4.0 or higher
 2. A browser that supports Web Bluetooth API ([Like Chrome](https://google.com/chrome))
