@@ -1,0 +1,95 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  height: 100%;
+  background-color: #222;
+}
+
+div.main {
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  width: 400px;
+  max-width: 100%;
+  box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.2);
+}
+
+button {
+  width: 100%;
+  padding: 10px 20px;
+  background: white;
+  border: 1px solid black;
+}
+
+button:hover {
+  background: #eee;
+}
+
+#container {
+  color: #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+#container > div {
+}
+
+#chart {
+  opacity: 0.3;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.init {
+  width: 400px;
+  max-width: 100%;
+  font-size: 20px;
+}
+
+.init input {
+  width: 100%;
+  padding: 8px 12px;
+  background-color: #111;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  color: white;
+  font-size: 18px;
+}
+
+.init a {
+  color: #6262ff;
+  display: inline-block;
+  float: right;
+}
+
+.form-group {
+  margin: 8px 4px;
+}
+
+#heartrate {
+  font-size: 30vw;
+  color: #f1f1f1;
+  margin: 0;
+  text-align: center;
+  font-weight: bold;
+}
+
+#heartrate .unit {
+  font-size: 5vw;
+  color: #c1c1c1;
+}
+
+.d-none {
+  display: none;
+}
