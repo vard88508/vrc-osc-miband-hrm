@@ -14,7 +14,7 @@ The float value(0-1) represents your heartrate from 0 to 255
 
 ## Usage
 
-1. First you need to get auth key for your Mi band. (Visit https://freemyband.com/ for more information)
+1. First and most complicated step is to get auth key for your Mi band. (Visit https://freemyband.com/ for more information)
 2. Download [vrchat-osc-miband-hrm.zip](https://github.com/vard88508/vrchat-osc-miband-hrm/releases), unpack and run `vrchat-osc-miband-hrm.exe` or if you don't trust me - Download this repository and run it trough node-js
 3. Enter your auth key to automaticly opened browser window and click Connect
 4. Pair your mi band with browser
