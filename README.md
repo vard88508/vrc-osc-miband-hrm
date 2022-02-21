@@ -4,7 +4,7 @@ By [Vard](https://twitter.com/VardFree)
 - Based on Jaapp-'s [miband-5-heart-rate-monitor](https://github.com/Jaapp-/miband-5-heart-rate-monitor)
 
 ### This app alows you to send osc messages to VRChat with your heartrate trough float value
-The float value(0-1) represents your heartrate from 0 to 254
+The float value(0-1) represents your heartrate from 0 to 255
 
 ## Requirements
 1. A PC on Windows with Bluetooth 4.0 or higher
