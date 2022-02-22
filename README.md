@@ -20,4 +20,5 @@ Basically it sets the float value of avatar parameter named `Heartrate` to `your
 5. Wait about ~15s and done! Now you sending data about your heartrate to VRChat
 
 ## Tips
-- RED_SIM's [Simple counter shader](https://patreon.com/posts/62864361) will help to display your heart rate to VRChat
+- Don't forget to turn on OSC in action menu
+- RED_SIM's [Simple counter shader](https://patreon.com/posts/62864361) will help you to display your heart rate to VRChat
