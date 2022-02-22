@@ -13,9 +13,9 @@ let vrchatOSC = new osc.UDPPort({
 vrchatOSC.open();
 open('html/index.html');
 
-console.log('Waiting for connection from browser...')
+console.log("Waiting for connection from browser...");
 server.on('connection', ws => {
-    console.log('Connected. Waiting for data...')
+    console.log("Connected. Waiting for data...");
     ws.on('message', function message(data) {
         console.log('Got heartrate: %s bpm', data);
         let heartrate = {
@@ -23,7 +23,7 @@ server.on('connection', ws => {
             args:
                 {
                     type: "f",
-                    value: data/254
+                    value: data/255
                 }
         };
         vrchatOSC.send(heartrate);
