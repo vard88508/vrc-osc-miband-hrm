@@ -18,7 +18,7 @@ It was recently discovered that the app can support not only Mi band 4/5, but ma
 2. Browser that supports Web Bluetooth API ([Like Chrome](https://google.com/chrome))
 
 ## Usage
-1. First and most complicated step is to get auth key of your device. (Visit https://freemyband.com/ for more information)
+1. First and most complicated step is to get auth key of your device. (For more information - please visit https://freemyband.com/ or https://github.com/argrento/huami-token if you experienced with python)
 2. Download [vrc-osc-miband-hrm.zip](https://github.com/vard88508/vrc-osc-miband-hrm/releases), unpack all files and run `vrc-osc-miband-hrm.exe` or if you don't trust me - Download this repository and run it trough node-js
 3. Enter your auth key and click Connect
 4. Pair your smartwatch/fitness tracker with browser
