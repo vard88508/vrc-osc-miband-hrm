@@ -17,7 +17,7 @@ Basically it sets the float value of avatar parameter named `Heartrate` to `your
 2. Download [vrc-osc-miband-hrm.zip](https://github.com/vard88508/vrc-osc-miband-hrm/releases), unpack all files and run `vrc-osc-miband-hrm.exe` or if you don't trust me - Download this repository and run it trough node-js
 3. Enter your auth key and click Connect
 4. Pair your mi band with browser
-5. Wait about ~15s and done! Now you sending data about your hear trate to VRChat
+5. Wait about ~15s and done! Now you sending data about your heart trate to VRChat
 
 ## Tips
 - Don't forget to turn on OSC in action menu
