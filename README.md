@@ -14,7 +14,7 @@ Basicly it sets the float value of avatar parameter named `Heartrate` to `your h
 
 ## Usage
 1. First and most complicated step is to get auth key for your Mi band. (Visit https://freemyband.com/ for more information)
-2. Download [vrchat-osc-miband-hrm.zip](https://github.com/vard88508/vrchat-osc-miband-hrm/releases), unpack and run `vrchat-osc-miband-hrm.exe` or if you don't trust me - Download this repository and run it trough node-js
+2. Download [vrc-osc-miband-hrm.zip](https://github.com/vard88508/vrc-osc-miband-hrm/releases), unpack and run `vrc-osc-miband-hrm.exe` or if you don't trust me - Download this repository and run it trough node-js
 3. Enter your auth key and click Connect
 4. Pair your mi band with browser
 5. Wait about ~15s and done! Now you sending data about your heartrate to VRChat
