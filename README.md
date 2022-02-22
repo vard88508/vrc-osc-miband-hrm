@@ -4,7 +4,7 @@ By [Vard](https://twitter.com/VardFree)
 - Based on Jaapp-'s [miband-5-heart-rate-monitor](https://github.com/Jaapp-/miband-5-heart-rate-monitor)
 
 ### What is this?
-This app alows you to send osc messages of your heartrate to VRChat
+This app alows you to send osc messages of your heartrate to VRChat  
 Basicly it sets the float value of parameter named 'Heartrate' to  'your heart rate/255' value
 The float value(0-1) represents your heartrate from 0 to 255
 
