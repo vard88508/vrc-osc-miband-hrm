@@ -5,7 +5,7 @@ By [Vard](https://twitter.com/VardFree)
 
 ### What is this?
 This app alows you to send osc messages of your heartrate to VRChat  
-Basicly it sets the float value of parameter named `Heartrate` to  `your heart rate/255` value
+Basicly it sets the float value of parameter named `Heartrate` to  `your heart rate/255`
 
 
 ## Requirements
