@@ -3,7 +3,7 @@
 By [Vard](https://twitter.com/VardFree)
 - Based on Jaapp-'s [miband-5-heart-rate-monitor](https://github.com/Jaapp-/miband-5-heart-rate-monitor)
 
-### What is this?
+## What is this?
 This app allows you to send osc messages of your heart rate to VRChat  
 Basicly it sets the float value of avatar parameter named `Heartrate` to `your heart rate divided by 255`
 
@@ -20,4 +20,4 @@ Basicly it sets the float value of avatar parameter named `Heartrate` to `your h
 5. Wait about ~15s and done! Now you sending data about your heartrate to VRChat
 
 ## Tips
-- RED_SIM's [Simple counter shader](https://test.com/) will help to display your heart rate to VRChat
+- RED_SIM's [Simple counter shader](https://patreon.com/posts/62864361) will help to display your heart rate to VRChat
