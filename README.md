@@ -1,10 +1,10 @@
-# Mi Band 4/5 osc heart rate monitor for VRChat
+# Mi Band 4/5 OSC heart rate monitor for VRChat
 ![image](https://i.imgur.com/J6bFJ7u.png)  
 By [Vard](https://twitter.com/VardFree)
 - Based on Jaapp-'s [miband-5-heart-rate-monitor](https://github.com/Jaapp-/miband-5-heart-rate-monitor)
 
 ## What is this?
-This app allows you to send osc messages of your heart rate using Mi Band 4/5 to VRChat.  
+This app allows you to send OSC messages of your heart rate using Mi Band 4/5 to VRChat.  
 Basically it sets the float value of avatar parameter named `Heartrate` to `your heart rate divided by 255`
 
 ## Requirements
