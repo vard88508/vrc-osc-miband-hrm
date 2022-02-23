@@ -25,4 +25,4 @@ It was recently discovered that the app can support not only Mi band 4/5, but ma
 5. Wait about ~15s and done! Now you sending data about your heart rate to VRChat
 
 ## Example Avatar
-As some of you asked - I made [Example Avatar unitypackage](https://github.com/vard88508/vrc-osc-miband-hrm/raw/main/Example_OSC_HRM_Avatar.unitypackage) (which is also requires RED_SIM's [Simple counter shader](https://patreon.com/posts/simple-counter-62864361) to show how it works on avatar side.
+As some of you asked - I made [Example Avatar unitypackage](https://github.com/vard88508/vrc-osc-miband-hrm/raw/main/Example_OSC_HRM_Avatar.unitypackage) (which is also requires RED_SIM's [Simple counter shader](https://patreon.com/posts/simple-counter-62864361)) to show how it works on avatar side.
