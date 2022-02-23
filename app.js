@@ -17,13 +17,13 @@ console.log("Waiting for connection from browser...");
 server.on('connection', ws => {
     console.log("Connected. Waiting for data...");
     ws.on('message', function message(data) {
-        console.log('Got heartrate: %s bpm', data);
+        console.log('Got heart rate: %s bpm', data);
         let heartrate = {
             address: "/avatar/parameters/Heartrate",
             args:
                 {
                     type: "f",
-                    value: data/255
+                    value: data/127-1
                 }
         };
         vrchatOSC.send(heartrate);
