@@ -34,8 +34,9 @@
           <button id="connect-button">Connect</button>
         </div>
         <a
-            href="https://vard.space/vrc-osc-hrm2/"
-            >Use this link for modern devices (like Mi Band 6)</a
+            
+            href="https://vard.space/vrc-osc-hrm/"
+            >Use this link for older devices (like Mi Band 4)</a
           >
       </div>
       <div class="hr d-none">
@@ -44,7 +45,7 @@
         </h1>
       </div>
     </div>
-
+    <script src="ecdh.js"></script>
     <script src="aes.js"></script>
     <script src="bundle.js"></script>
     <script>
@@ -74,7 +75,7 @@
           chart.update(e.detail);
         });
         try {
-          window.miband = new MiBand5(authKey);
+          window.miband = new MiBand6(authKey);
           await window.miband.init();
         } catch (e) {
           alert(e.message);

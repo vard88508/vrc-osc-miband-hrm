@@ -11,9 +11,9 @@ let vrchatOSC = new osc.UDPPort({
 });
 
 vrchatOSC.open();
-open('html/index.html');
-
+open('https://vard.space/vrc-osc-hrm/');
 console.log("Waiting for connection from browser...");
+
 server.on('connection', ws => {
     console.log("Connected. Waiting for data...");
     ws.on('message', function message(data) {
