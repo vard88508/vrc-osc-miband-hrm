@@ -22,7 +22,7 @@ It was recently discovered that the app can support not only Mi band 4/5, but ma
 2. Download and launch [vrc-osc-hrm.exe](https://github.com/vard88508/vrc-osc-miband-hrm/releases) or if you don't trust me - Download this repository and run it trough node-js
 3. Enter your auth key and click Connect (Make sure you turned off bluetooth on your phone)
 4. Pair your smartwatch/fitness tracker with browser
-5. Wait about ~15s and done! Now you sending data about your heart rate to VRChat
+5. Wait about ~15s and done! Now you sending data about your heart rate to VRChat (Don't forget to turn on OSC in Action menu)
 
 ## Example Avatar
 As some of you asked - I made [Example_Avatar.unitypackage](https://github.com/vard88508/vrc-osc-miband-hrm/raw/main/Example_Avatar.unitypackage) (which is also requires RED_SIM's [Simple counter shader](https://patreon.com/posts/simple-counter-62864361)) to show how it works on avatar side.
