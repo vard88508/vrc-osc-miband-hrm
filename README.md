@@ -10,7 +10,7 @@ Basically it sets the float value of avatar parameter named `Heartrate` from -1(
 ## Supported devices
 It was recently discovered that the app can support not only Mi band 4/5, but many more devices! If your smartwatch/fitness tracker supports Amazfit or Zepp apps, give it a try.
 ### Confirmed devices list:
-- Xiaomi Mi band 4/5/6
+- Xiaomi Mi Band 4/5/6
 - Amazfit Band 5/Bip S Lite
 
 ## Requirements
