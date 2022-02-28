@@ -69,7 +69,7 @@
         console.log("Got heartrate", e.detail);
           ws.send(e.detail);
         hr.innerText = e.detail;
-        // chart.update(e.detail);
+        chart.update(e.detail);
       });
       try {
         window.miband = miband5.checked ? new MiBand5(authKey) : new MiBand6(authKey);
