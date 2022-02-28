@@ -6,7 +6,6 @@ html {
   height: 100%;
   background-color: #222;
 }
-
 div.main {
   padding: 20px;
   background: white;
@@ -15,18 +14,6 @@ div.main {
   max-width: 100%;
   box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.2);
 }
-
-button {
-  width: 100%;
-  padding: 10px 20px;
-  background: white;
-  border: 1px solid black;
-}
-
-button:hover {
-  background: #eee;
-}
-
 #container {
   color: #eee;
   display: flex;
@@ -38,10 +25,50 @@ button:hover {
   left: 0;
   right: 0;
 }
-
-#container > div {
+#container > .init {
+  width: 400px;
+  max-width: 100%;
+  font-size: 20px;
 }
-
+#container > .init a {
+  color: #6262ff;
+  display: inline-block;
+  float: right;
+}
+#container > .init > .form-group {
+  margin: 8px 4px;
+}
+#container > .init > .form-group > input {
+  padding: 8px 12px;
+  background-color: #111;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  color: white;
+  font-size: 18px;
+}
+#container > .init > .form-group > input[type="text"] {
+  width: 100%;
+}
+#container > .init > .form-group > button {
+  width: 100%;
+  padding: 10px 20px;
+  background: white;
+  border: 1px solid black;
+}
+#container > .init > .form-group > button:hover {
+  background: #eee;
+}
+#container > .hr #heartrate {
+  font-size: 30vw;
+  color: #f1f1f1;
+  margin: 0;
+  text-align: center;
+  font-weight: bold;
+}
+#container > .hr #heartrate .unit {
+  font-size: 5vw;
+  color: #c1c1c1;
+}
 #chart {
   opacity: 0.3;
   position: absolute;
@@ -50,48 +77,6 @@ button:hover {
   left: 0;
   right: 0;
 }
-
-.init {
-  width: 400px;
-  max-width: 100%;
-  font-size: 20px;
-}
-
-.init input {
-  width: 100%;
-  padding: 8px 12px;
-  background-color: #111;
-  border: 1px solid #eee;
-  border-radius: 4px;
-  color: white;
-  font-size: 18px;
-}
-
-.init a {
-  color: #6262ff;
-  display: inline-block;
-  float: right;
-  font-size: 18px;
-  font-style: bold;
-}
-
-.form-group {
-  margin: 8px 4px;
-}
-
-#heartrate {
-  font-size: 30vw;
-  color: #f1f1f1;
-  margin: 0;
-  text-align: center;
-  font-weight: bold;
-}
-
-#heartrate .unit {
-  font-size: 5vw;
-  color: #c1c1c1;
-}
-
 .d-none {
   display: none;
 }
