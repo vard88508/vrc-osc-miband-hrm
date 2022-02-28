@@ -1,85 +1,85 @@
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-    />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>VRC OSC HRM</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div id="chart"></div>
-    <div id="container">
-      <div class="init">
-        <div class="form-group">
-          <label for="auth-key"
-            >Auth key
-            <a
-            target="_blank"
-            href="https://github.com/vard88508/vrc-osc-miband-hrm"
-            >GitHub Page</a
-          >
-          </label>
-        </div>
-        <div class="form-group">
-          <input
-            type="text"
-            id="auth-key"
-            placeholder="94359d5b8b092e1286a43cfb62ee7923"
-          />
-        </div>
-        <div class="form-group">
-          <button id="connect-button">Connect</button>
-        </div>
-        <a
-            href="https://vard.space/vrc-osc-hrm2/"
-            >Use this link for modern devices (like Mi Band 6)</a
-          >
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>VRC OSC HRM</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div id="chart"></div>
+  <div id="container">
+    <div class="init">
+      <div class="form-group">
+        <label for="auth-key">Auth key
+          <a target="_blank" href="https://codeberg.org/Freeyourgadget/Gadgetbridge/wiki/Huami-Server-Pairing">what is this?</a>
+        </label>
       </div>
-      <div class="hr d-none">
-        <h1 id="heartrate">
-          <span id="hr">-</span><span class="unit">BPM</span>
-        </h1>
+      <div class="form-group">
+        <input type="text" id="auth-key" placeholder="94359d5b8b092e1286a43cfb62ee7923" />
+      </div>
+      <label class="form-group">
+        <input type="checkbox" id="miband5" />Use Mi Band 5/4
+      </label>
+      <div class="form-group">
+        <button id="connect-button">Connect</button>
+      </div>
+      <div class="form-group">
+        <a target="_blank" href="https://github.com/vard88508/vrc-osc-miband-hrm">GitHub Page</a>
       </div>
     </div>
+    <div class="hr d-none">
+      <h1 id="heartrate">
+        <span id="hr">-</span><span class="unit">BPM</span>
+      </h1>
+    </div>
+  </div>
+  <script src="ecdh.js"></script>
+  <script src="aes.js"></script>
+  <script src="bundle.js"></script>
+  <script>
+    const ws = new WebSocket('ws://localhost:3228');
+    const chart = new Chart("#chart");
+    const hr = document.querySelector("#hr");
+    const connectButton = document.querySelector("#connect-button");
+    const keyInput = document.querySelector("#auth-key");
+    const miband5 = document.querySelector("#miband5");
+    const initBox = document.querySelector(".init");
+    const hrBox = document.querySelector(".hr");
+    let authKey = localStorage.getItem("auth-key");
+    if (authKey) {
+      keyInput.value = authKey;
+    }
+    miband5.checked = localStorage.getItem("miband5") == "true";
 
-    <script src="aes.js"></script>
-    <script src="bundle.js"></script>
-    <script>
-      const ws = new WebSocket('ws://localhost:3228');
-      const chart = new Chart("#chart");
-      const hr = document.querySelector("#hr");
-      const connectButton = document.querySelector("#connect-button");
-      const keyInput = document.querySelector("#auth-key");
-      const initBox = document.querySelector(".init");
-      const hrBox = document.querySelector(".hr");
-      let authKey = localStorage.getItem("auth-key");
-      if (authKey) {
-        keyInput.value = authKey;
-      }
+    miband5.addEventListener("change", e => {
+      localStorage.setItem("miband5", miband5.checked);
+    })
 
-      connectButton.addEventListener("click", async () => {
-        authKey = keyInput.value;
-        window.addEventListener("connected", (e) => {
-          initBox.classList.add("d-none");
-          hrBox.classList.remove("d-none");
-          localStorage.setItem("auth-key", authKey);
-        });
-        window.addEventListener("heartrate", (e) => {
-          console.log("Got heartrate", e.detail);
-          ws.send(e.detail);
-          hr.innerText = e.detail;
-          chart.update(e.detail);
-        });
-        try {
-          window.miband = new MiBand5(authKey);
-          await window.miband.init();
-        } catch (e) {
-          alert(e.message);
-        }
+    connectButton.addEventListener("click", async () => {
+      authKey = keyInput.value;
+      window.addEventListener("connected", e => {
+        initBox.classList.add("d-none");
+        hrBox.classList.remove("d-none");
+        localStorage.setItem("auth-key", authKey);
       });
-    </script>
-  </body>
+      window.addEventListener("heartrate", e => {
+        console.log("Got heartrate", e.detail);
+          ws.send(e.detail);
+        hr.innerText = e.detail;
+        chart.update(e.detail);
+      });
+      try {
+        window.miband = miband5.checked ? new MiBand5(authKey) : new MiBand6(authKey);
+        await window.miband.init();
+      } catch (e) {
+        console.log(e.message);
+        alert(e.message);
+      }
+    });
+  </script>
+</body>
+
 </html>
