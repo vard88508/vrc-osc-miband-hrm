@@ -7,8 +7,8 @@ By [Vard](https://twitter.com/VardFree)
 ## What is this?
 This app allows you to send OSC messages of your heart rate using your smartwatch/fitness tracker to VRChat.  
 Basically it sets two float values of avatar parameters named `Heartrate` and `Heartrate2`
-- 'Heartrate' sends float value from -1 to 1 (0-255bpm)
-- 'Heartrate2' sends float value from 0 to 1 (0-255bpm) (Easier to control your animations but not enough precise over network. Do not use this to show actual bpm count)
+- `Heartrate` sends float value from -1 to 1 (0-255bpm)
+- `Heartrate2` sends float value from 0 to 1 (0-255bpm) (Easier to control your animations but not enough precise over network. Do not use this to show actual bpm count)
 
 ## Supported devices
 It was recently discovered that the app can support not only Mi band 4/5, but many more devices! If your smartwatch/fitness tracker supports Amazfit or Zepp apps, give it a try.
