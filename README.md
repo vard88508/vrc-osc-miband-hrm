@@ -2,13 +2,13 @@
 ![image](https://i.imgur.com/J6bFJ7u.png)  
 By [Vard](https://twitter.com/VardFree)
 - Based on Jaapp-'s [miband-5-heart-rate-monitor](https://github.com/Jaapp-/miband-5-heart-rate-monitor) and gzalo's [miband-6-heart-rate-monitor](https://github.com/gzalo/miband-6-heart-rate-monitor)
-- Thanks [853](https://github.com/Sonic853) for help with front-end part of the app
+- Thanks [853](https://github.com/Sonic853) for contribution
 
 ## What is this?
 This app allows you to send OSC messages of your heart rate using your smartwatch/fitness tracker to your VRChat Avatar.  
 Basically you have 3 parameters to play with:
 - `Heartrate` sends float value `from -1 to 1` (0-255bpm) (Use this when you need to display bpm counter)
-- `Heartrate2` sends float value `from 0 to 1` (0-255bpm) (Easier to control your animations but not enough precise over network. Do not use this to display bpm counter. Use cases: making actual sound of heartbeat, making animations which speed binded to your bpm)
+- `Heartrate2` sends float value `from 0 to 1` (0-255bpm) (Easier to control your animations but not enough precise over network. Do not use this to display bpm counter. Use cases: making actual sound of heartbeat, making animations which speed is equal to your bpm)
 - `Heartrate3` sends int value `from 0 to 255` (0-255bpm) (Useful for those who wanna bind specific event to specific heart rate. Use case: changing your outfit on avatar to sport one when your bpm goes higher than 130)
 
 ## Supported devices
