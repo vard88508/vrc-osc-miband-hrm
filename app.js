@@ -37,8 +37,17 @@ server.on('connection', ws => {
                         value: data/255
                     }
             };
+            let heartrate3 = {
+                address: "/avatar/parameters/Heartrate3",
+                args:
+                    {
+                        type: "i",
+                        value: data
+                    }
+            };
             vrchatOSC.send(heartrate);
             vrchatOSC.send(heartrate2);
+            vrchatOSC.send(heartrate3);
         }
     });
 });
