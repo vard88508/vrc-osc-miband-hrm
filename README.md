@@ -30,3 +30,5 @@ It was recently discovered that the app can support not only Mi band 4/5, but ma
 
 ## Example Avatar
 As some of you asked - I made [Example_Avatar.unitypackage](https://github.com/vard88508/vrc-osc-miband-hrm/raw/main/Example_Avatar.unitypackage) (which is also requires RED_SIM's [Simple counter shader](https://patreon.com/posts/simple-counter-62864361)) to show how `Heartrate` parameter works on avatar side.
+
+If you have any questions: ask them [here](https://github.com/vrchat-community/osc/discussions/97), or in #avatars-osc channel in VRChat discord.
