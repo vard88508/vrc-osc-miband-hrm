@@ -6,9 +6,10 @@ By [Vard](https://twitter.com/VardFree)
 
 ## What is this?
 This app allows you to send OSC messages of your heart rate using your smartwatch/fitness tracker to VRChat.  
-Basically it sets two float values of avatar parameters named `Heartrate` and `Heartrate2`
-- `Heartrate` sends float value from -1 to 1 (0-255bpm)
-- `Heartrate2` sends float value from 0 to 1 (0-255bpm) (Easier to control your animations but not enough precise over network. Do not use this to show actual bpm count)
+Basically you have 3 parameters to play with:
+- `Heartrate` sends float value `from -1 to 1` (0-255bpm) (Use this when you need to display bpm counter)
+- `Heartrate2` sends float value `from 0 to 1` (0-255bpm) (Easier to control your animations but not enough precise over network. Do not use this to display bpm counter. Use cases: making actual sound of heartbeat, making animations which speed binded to your bpm)
+- `Heartrate3` sends int value `from 0 to 255` (0-255bpm) (Useful for those who wanna bind specific event to specific heart rate. Use case: changing your outfit on avatar to sport one when your bpm goes higher than 130)
 
 ## Supported devices
 It was recently discovered that the app can support not only Mi band 4/5, but many more devices! If your smartwatch/fitness tracker supports Amazfit or Zepp apps, give it a try.
@@ -28,4 +29,4 @@ It was recently discovered that the app can support not only Mi band 4/5, but ma
 5. Wait about ~15s and done! Now you sending data about your heart rate to VRChat (Don't forget to turn on OSC in Action menu)
 
 ## Example Avatar
-As some of you asked - I made [Example_Avatar.unitypackage](https://github.com/vard88508/vrc-osc-miband-hrm/raw/main/Example_Avatar.unitypackage) (which is also requires RED_SIM's [Simple counter shader](https://patreon.com/posts/simple-counter-62864361)) to show how it works on avatar side.
+As some of you asked - I made [Example_Avatar.unitypackage](https://github.com/vard88508/vrc-osc-miband-hrm/raw/main/Example_Avatar.unitypackage) (which is also requires RED_SIM's [Simple counter shader](https://patreon.com/posts/simple-counter-62864361)) to show how `Heartrate` parameter works on avatar side.
