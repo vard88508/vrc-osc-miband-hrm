@@ -32,7 +32,7 @@ div.main {
 }
 #container > .init a {
   color: #6262ff;
-  display: inline-block;
+  display: block;
   float: right;
 }
 #container > .init > .form-group {
@@ -68,6 +68,62 @@ div.main {
 #container > .hr #heartrate .unit {
   font-size: 5vw;
   color: #c1c1c1;
+}
+#container > .WebSocket {
+  position: fixed;
+  top: -200px;
+  left: 0;
+  font-size: 20px;
+  height: 220px;
+  transition: top 0.5s;
+}
+#container > .WebSocket label {
+  display: block;
+}
+#container > .WebSocket label input {
+  width: 100%;
+  padding: 8px 12px;
+  background-color: #111;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  color: white;
+  font-size: 18px;
+}
+#container > .WebSocket button {
+  width: 100%;
+  padding: 10px 20px;
+  background: white;
+  border: 1px solid black;
+}
+#container > .WebSocket button:hover {
+  background: #eee;
+}
+#container > .WebSocket .Status {
+  margin: 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  line-height: 20px;
+}
+#container > .WebSocket .Status #WSStatus::after {
+  content: "Init";
+  color: dodgerblue;
+}
+#container > .WebSocket .Status #WSStatus.Connecting::after {
+  content: "Connecting";
+  color: dodgerblue;
+}
+#container > .WebSocket .Status #WSStatus.Connected::after {
+  content: "Connected";
+  color: darkgreen;
+}
+#container > .WebSocket .Status #WSStatus.Disconnected::after {
+  content: "Disconnected";
+  color: brown;
+}
+#container > .WebSocket:hover {
+  top: 0px;
 }
 #chart {
   opacity: 0.3;
