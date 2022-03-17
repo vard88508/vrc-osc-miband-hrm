@@ -1,6 +1,6 @@
 {
-  "name": "vrchat-osc-miband-hrm",
-  "version": "1.0.0",
+  "name": "vrc-osc-miband-hrm",
+  "version": "1.6.0",
   "description": "",
   "main": "app.js",
   "scripts": {

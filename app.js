@@ -11,7 +11,7 @@ let vrchatOSC = new osc.UDPPort({
 });
 
 vrchatOSC.open();
-open('https://vard.space/vrc-osc-hrm/');
+open('https://vard88508.github.io/vrc-osc-miband-hrm/html/');
 console.log("Waiting for connection from browser...");
 
 server.on('connection', ws => {
