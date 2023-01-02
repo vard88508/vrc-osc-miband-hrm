@@ -1,0 +1,277 @@
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>VRC OSC HRM</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div id="chart"></div>
+  <div id="container">
+    <div class="init">
+      <div class="form-group">
+        <label for="auth-key">Auth key
+          <a target="_blank" href="https://codeberg.org/Freeyourgadget/Gadgetbridge/wiki/Huami-Server-Pairing">what is this?</a>
+        </label>
+      </div>
+      <div class="form-group">
+        <input type="text" id="auth-key" placeholder="94359d5b8b092e1286a43cfb62ee7923" />
+      </div>
+      <label class="form-group">
+        <input type="checkbox" id="miband5" />Older device support (like Mi Band 4/5)
+      </label>
+      <div class="form-group">
+        <button id="connect-button">Connect</button>
+      </div>
+      <div class="form-group">
+        <a target="_blank" href="https://github.com/vard88508/vrc-osc-miband-hrm">GitHub Page</a>
+      </div>
+    </div>
+    <div class="hr d-none">
+      <h1 id="heartrate">
+        <span id="hr">-</span><span class="unit">BPM</span>
+      </h1>
+    </div>
+    <div class="WebSocket">
+      <label class="form-group">WebSocket IP
+        <input type="text" id="WSIP" placeholder="localhost" />
+      </label>
+      <label class="form-group">Port
+        <input type="text" id="WSPort" placeholder="3228" />
+      </label>
+      <button id="ConnectWS">Connect WebSocket</button>
+      <p class="Status">WebSocket Status: <span id="WSStatus"></span></p>
+    </div>
+    <div class="ChatboxHR" style="
+            position: fixed;
+            top: 5px;
+            left: 390px;
+            font-size: 20px;
+            height: 220px;
+            transition: top 0.5s;">
+      <input type="checkbox" id="chatbox" name="chatbox" onclick='cb(this)'>
+      <label for="chatbox">Send to Chatbox</label>
+      <form name="chatbox_form" style="display: flex;">
+        <input type='text' name="chatbox_text" id="chatbox_text" style='display:none' value="❤{HR} bpm ">
+        <button type="button" name="SafeChatboxText" id="SafeChatboxText" style='display:none'>Safe</button>
+      </form>
+    </div>
+  </div>
+  <script>
+    function cb(th){
+      check = th.checked;
+      var form = document.forms.chatbox_form;
+      if (check === true){
+        form.elements.chatbox_text.style.display = 'block';
+        form.elements.SafeChatboxText.style.display = 'block';
+      } else{
+        form.elements.chatbox_text.style.display = 'none';
+        form.elements.SafeChatboxText.style.display = 'none';
+      }
+    }
+  </script>
+  <script src="ecdh.js"></script>
+  <script src="aes.js"></script>
+  <script src="bundle.js"></script>
+  <script>
+    // let ws = new WebSocket('ws://localhost:3228');
+    class Events {
+      events;
+      constructor() {
+        this.events = Object.create(null);
+      }
+      /**
+       * @param {string} name
+       * @param {Function} fn
+       * @returns
+       */
+      on(name, fn) {
+        if (!this.events[name]) {
+          this.events[name] = [];
+        }
+        this.events[name].push(fn);
+        return this;
+      }
+      /**
+       * @param {string} name
+       * @param  {any} args
+       * @returns
+       */
+      emit(name, ...args) {
+        if (!this.events[name]) {
+          return this;
+        }
+        const fns = this.events[name];
+        fns.forEach((fn) => fn.call(this, ...args));
+        return this;
+      }
+      /**
+       * @param {string} name
+       * @param {Function} fn
+       * @returns
+       */
+      off(name, fn) {
+        if (!this.events[name]) {
+          return this;
+        }
+        if (!fn) {
+          this.events[name] = null;
+          return this;
+        }
+        const index = this.events[name].indexOf(fn);
+        this.events[name].splice(index, 1);
+        return this;
+      }
+      /**
+       * @param {string} name
+       * @param {Function} fn
+       * @returns
+       */
+      once(name, fn) {
+        const only = () => {
+          fn.apply(this, arguments);
+          this.off(name, only);
+        };
+        this.on(name, only);
+        return this;
+      }
+    }
+    class WS extends Events {
+      /**
+       * @type {WebSocket}
+       */
+      websocket
+      realclose = true;
+      get ip() {
+        return localStorage.getItem('WSIP') ?? 'localhost'
+      }
+      set ip(value) {
+        localStorage.setItem('WSIP', value ?? 'localhost')
+      }
+      get port() {
+        return localStorage.getItem('WSPort') ?? '3228'
+      }
+      set port(value) {
+        localStorage.setItem('WSPort', value ?? '3228')
+      }
+      connect(ip = this.ip, port = this.port) {
+        this.ip = ip;
+        this.port = port;
+        try {
+          if (this.websocket) {
+            this.realclose = true;
+            this.disconnect();
+          }
+          this.websocket = new WebSocket(`ws://${this.ip}:${this.port}`);
+          this.emit('connecting');
+          this.websocket.addEventListener('open', () => {
+            this.emit('open');
+            this.realclose = false;
+          });
+          this.websocket.addEventListener('close', () => {
+            this.emit('close');
+          });
+          this.websocket.addEventListener('error', event => console.log('WebSocket error: ', event));
+        } catch (e) {
+          console.log(e);
+        }
+      }
+      /**
+       * @param {string | ArrayBufferLike | Blob | ArrayBufferView} value 
+       * @returns 
+       */
+      send(value) {
+        return this.websocket.send(value);
+      }
+      disconnect() {
+        if (this.websocket) {
+          this.websocket.close();
+          this.websocket = null;
+        }
+      }
+    }
+    const ws = new WS();
+    const WSIP = document.querySelector('#WSIP');
+    const WSPort = document.querySelector('#WSPort');
+    const WSStatus = document.querySelector("#WSStatus");
+    const ConnectWS = document.querySelector("#ConnectWS");
+    const SafeChatboxText = document.querySelector("#SafeChatboxText");
+    const ChatboxHR = document.querySelector("#chatbox");
+    WSIP.value = ws.ip;
+    WSPort.value = ws.port;
+    ConnectWS.addEventListener("click", () => {
+      ws.ip = WSIP.value;
+      ws.port = WSPort.value;
+      WSStatus.classList.value = '';
+      ws.connect();
+    });
+    SafeChatboxText.addEventListener("click", () => {
+      ws.send(JSON.stringify({"text":chatbox_text.value}));
+    });
+    ChatboxHR.addEventListener("click", () => {
+      ws.send(chatbox.checked);
+    });
+    ws.on('connecting', () => {
+      console.log('WebSocket Connecting');
+      WSStatus.classList.value = '';
+      WSStatus.classList.add('Connecting');
+    })
+    ws.on('open', () => {
+      console.log('WebSocket Connected');
+      WSStatus.classList.value = '';
+      WSStatus.classList.add('Connected');
+      ws.send(JSON.stringify({"text":chatbox_text.value}));
+      ws.send(chatbox.checked);
+    })
+    ws.on('close', () => {
+      WSStatus.classList.value = '';
+      WSStatus.classList.add('Disconnected');
+      console.log(`WebSocket Disconnected${ws.realclose ? '' : ', try again after 10 seconds..'}.`);
+      if (!ws.realclose) setTimeout(() => { ws.connect() }, 10000);
+    })
+    ws.connect();
+    const chart = new Chart("#chart");
+    const hr = document.querySelector("#hr");
+    const connectButton = document.querySelector("#connect-button");
+    const keyInput = document.querySelector("#auth-key");
+    const miband5 = document.querySelector("#miband5");
+    const initBox = document.querySelector(".init");
+    const hrBox = document.querySelector(".hr");
+    let authKey = localStorage.getItem("auth-key");
+    if (authKey) {
+      keyInput.value = authKey;
+    }
+    miband5.checked = localStorage.getItem("miband5") == "true";
+
+    miband5.addEventListener("change", e => {
+      localStorage.setItem("miband5", miband5.checked);
+    })
+
+    connectButton.addEventListener("click", async () => {
+      authKey = keyInput.value;
+      window.addEventListener("connected", e => {
+        initBox.classList.add("d-none");
+        hrBox.classList.remove("d-none");
+        localStorage.setItem("auth-key", authKey);
+      });
+      window.addEventListener("heartrate", e => {
+        console.log("Got heartrate", e.detail);
+        ws.send(e.detail);
+        hr.innerText = e.detail;
+        chart.update(e.detail);
+      });
+      try {
+        window.miband = miband5.checked ? new MiBand5(authKey) : new MiBand6(authKey);
+        await window.miband.init();
+      } catch (e) {
+        console.log(e.message);
+        alert(e.message);
+      }
+    });
+  </script>
+</body>
+
+</html>
