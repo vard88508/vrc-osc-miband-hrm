@@ -14,7 +14,7 @@ let sendToChatbox = "false";
 let chatboxText = "❤{HR} bpm";
 
 vrchatOSC.open();
-// open('https://vard88508.github.io/vrc-osc-miband-hrm/html/');
+open('https://vard88508.github.io/vrc-osc-miband-hrm/html/');
 console.log("Waiting for connection from browser...");
 
 server.on('connection', ws => {
