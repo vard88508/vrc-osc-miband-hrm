@@ -5,7 +5,7 @@ By [Vard](https://twitter.com/VardFree)
 - Thanks [853](https://github.com/Sonic853) and [Runnin4ik](https://github.com/Runnin4ik) for contribution
 
 ## What is this?
-This app allows you to send OSC messages of your heart rate using your smartwatch/fitness tracker to your VRChat Avatar.  
+This app allows you to send OSC messages of your heart rate using your smartwatch/fitness tracker to your VRChat Avatar/Chatbox.  
 Basically you have 3 parameters to play with:
 - `Heartrate` sends float value `from -1 to 1` (0-255bpm) (Use this when you need to display bpm counter)
 - `Heartrate2` sends float value `from 0 to 1` (0-255bpm) (Easier to control your animations but not enough precise over network. Do not use this to display bpm counter. Use cases: making actual sound of heartbeat, making animations which speed is equal to your bpm)
