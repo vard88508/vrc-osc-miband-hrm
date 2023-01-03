@@ -45,7 +45,34 @@
       <button id="ConnectWS">Connect WebSocket</button>
       <p class="Status">WebSocket Status: <span id="WSStatus"></span></p>
     </div>
+    <div class="ChatboxHR" style="
+            position: fixed;
+            top: 5px;
+            left: 390px;
+            font-size: 20px;
+            height: 220px;
+            transition: top 0.5s;">
+      <input type="checkbox" id="chatbox" name="chatbox" onclick='cb(this)'>
+      <label for="chatbox">Send to Chatbox</label>
+      <form name="chatbox_form" style="display: flex;">
+        <input type='text' name="chatbox_text" id="chatbox_text" style='display:none' value="❤{HR} bpm ">
+        <button type="button" name="SafeChatboxText" id="SafeChatboxText" style='display:none'>Safe</button>
+      </form>
+    </div>
   </div>
+  <script>
+    function cb(th){
+      check = th.checked;
+      var form = document.forms.chatbox_form;
+      if (check === true){
+        form.elements.chatbox_text.style.display = 'block';
+        form.elements.SafeChatboxText.style.display = 'block';
+      } else{
+        form.elements.chatbox_text.style.display = 'none';
+        form.elements.SafeChatboxText.style.display = 'none';
+      }
+    }
+  </script>
   <script src="ecdh.js"></script>
   <script src="aes.js"></script>
   <script src="bundle.js"></script>
@@ -171,6 +198,8 @@
     const WSPort = document.querySelector('#WSPort');
     const WSStatus = document.querySelector("#WSStatus");
     const ConnectWS = document.querySelector("#ConnectWS");
+    const SafeChatboxText = document.querySelector("#SafeChatboxText");
+    const ChatboxHR = document.querySelector("#chatbox");
     WSIP.value = ws.ip;
     WSPort.value = ws.port;
     ConnectWS.addEventListener("click", () => {
@@ -178,6 +207,12 @@
       ws.port = WSPort.value;
       WSStatus.classList.value = '';
       ws.connect();
+    });
+    SafeChatboxText.addEventListener("click", () => {
+      ws.send(JSON.stringify({"text":chatbox_text.value}));
+    });
+    ChatboxHR.addEventListener("click", () => {
+      ws.send(chatbox.checked);
     });
     ws.on('connecting', () => {
       console.log('WebSocket Connecting');
@@ -188,6 +223,8 @@
       console.log('WebSocket Connected');
       WSStatus.classList.value = '';
       WSStatus.classList.add('Connected');
+      ws.send(JSON.stringify({"text":chatbox_text.value}));
+      ws.send(chatbox.checked);
     })
     ws.on('close', () => {
       WSStatus.classList.value = '';
