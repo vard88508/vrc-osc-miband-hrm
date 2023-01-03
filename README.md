@@ -2,7 +2,7 @@
 ![image](https://i.imgur.com/J6bFJ7u.png)  
 By [Vard](https://twitter.com/VardFree)
 - Based on Jaapp-'s [miband-5-heart-rate-monitor](https://github.com/Jaapp-/miband-5-heart-rate-monitor) and gzalo's [miband-6-heart-rate-monitor](https://github.com/gzalo/miband-6-heart-rate-monitor)
-- Thanks [853](https://github.com/Sonic853) and [DigitalStars](https://github.com/digitalstars) for contribution
+- Thanks [853](https://github.com/Sonic853) and [Runnin4ik](https://github.com/Runnin4ik) for contribution
 
 ## What is this?
 This app allows you to send OSC messages of your heart rate using your smartwatch/fitness tracker to your VRChat Avatar.  
