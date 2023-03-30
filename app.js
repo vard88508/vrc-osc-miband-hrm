@@ -1,6 +1,8 @@
 const osc = require("osc");
 const WebSocket = require('ws');
 const open = require('open');
+const throttledQueue = require('throttled-queue');
+const chatboxRatelimit = throttledQueue(1, 1300);
 
 const server = new WebSocket.Server({ port: 3228});
 
@@ -61,18 +63,20 @@ server.on('connection', ws => {
 
                 if(sendToChatbox === "true") {
 
-                    let text = chatboxText.replace("{HR}", data_string)+"    "
-                    // console.log('send '+ text);
+                    chatboxRatelimit(() => {
+                        let text = chatboxText.replace("{HR}", data_string)+"    "
+                        // console.log('send '+ text);
 
-                    let heartrate_chatbox = {
-                        address: "/chatbox/input",
-                        args: [
-                            { type: "s", value: text},
-                            { type: "T", value: true}
-                        ],
-                    };
+                        let heartrate_chatbox = {
+                            address: "/chatbox/input",
+                            args: [
+                                { type: "s", value: text},
+                                { type: "T", value: true}
+                            ],
+                        };
 
-                    vrchatOSC.send(heartrate_chatbox);
+                        vrchatOSC.send(heartrate_chatbox);
+                    });
                 }
             }
         }
