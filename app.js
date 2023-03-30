@@ -1,6 +1,9 @@
 const osc = require("osc");
 const WebSocket = require('ws');
 const open = require('open');
+const {apps} = open;
+const throttledQueue = require('throttled-queue');
+const chatboxRatelimit = throttledQueue(1, 1300);
 
 const server = new WebSocket.Server({ port: 3228});
 
@@ -14,7 +17,7 @@ let sendToChatbox = "false";
 let chatboxText = "❤{HR} bpm";
 
 vrchatOSC.open();
-open('https://vard88508.github.io/vrc-osc-miband-hrm/html/');
+open('https://vard88508.github.io/vrc-osc-miband-hrm/html/', {app: {name: apps.chrome}});
 console.log("Waiting for connection from browser...");
 
 server.on('connection', ws => {
@@ -27,7 +30,7 @@ server.on('connection', ws => {
         } else if(data_string === "true" || data_string === "false") {
             sendToChatbox = data_string;
         } else {
-            if (data === "0") {
+            if (data == 0) {
                 console.log("Got heart rate: 0 bpm, skipping parameter update...");
             } else {
                 console.log('Got heart rate: %s bpm', data);
@@ -61,18 +64,20 @@ server.on('connection', ws => {
 
                 if(sendToChatbox === "true") {
 
-                    let text = chatboxText.replace("{HR}", data_string)+"    "
-                    // console.log('send '+ text);
+                    chatboxRatelimit(() => {
+                        let text = chatboxText.replace("{HR}", data_string)+"    "
+                        // console.log('send '+ text);
 
-                    let heartrate_chatbox = {
-                        address: "/chatbox/input",
-                        args: [
-                            { type: "s", value: text},
-                            { type: "T", value: true}
-                        ],
-                    };
+                        let heartrate_chatbox = {
+                            address: "/chatbox/input",
+                            args: [
+                                { type: "s", value: text},
+                                { type: "T", value: true}
+                            ],
+                        };
 
-                    vrchatOSC.send(heartrate_chatbox);
+                        vrchatOSC.send(heartrate_chatbox);
+                    });
                 }
             }
         }

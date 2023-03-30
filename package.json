@@ -10,7 +10,8 @@
   "license": "MIT",
   "dependencies": {
     "open": "^8.4.0",
-    "osc": "^2.4.2",
+    "osc": "^2.4.4",
+    "throttled-queue": "^2.1.4",
     "ws": "^8.5.0"
   }
 }
