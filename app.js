@@ -1,6 +1,7 @@
 const osc = require("osc");
 const WebSocket = require('ws');
 const open = require('open');
+const {apps} = open;
 const throttledQueue = require('throttled-queue');
 const chatboxRatelimit = throttledQueue(1, 1300);
 
@@ -16,7 +17,7 @@ let sendToChatbox = "false";
 let chatboxText = "❤{HR} bpm";
 
 vrchatOSC.open();
-open('https://vard88508.github.io/vrc-osc-miband-hrm/html/');
+open('https://vard88508.github.io/vrc-osc-miband-hrm/html/', {app: {name: apps.chrome}});
 console.log("Waiting for connection from browser...");
 
 server.on('connection', ws => {
