@@ -27,7 +27,7 @@ server.on('connection', ws => {
         } else if(data_string === "true" || data_string === "false") {
             sendToChatbox = data_string;
         } else {
-            if (data === "0") {
+            if (data == 0) {
                 console.log("Got heart rate: 0 bpm, skipping parameter update...");
             } else {
                 console.log('Got heart rate: %s bpm', data);
